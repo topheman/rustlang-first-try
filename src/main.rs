@@ -1,14 +1,21 @@
+mod language;
+mod greeter;
+
+use language::Language;
+
 fn main() {
     let first_name = "Tony";
     let last_name = "Stark";
-    say_hello(first_name, last_name, Language::English);
-    say_hello(first_name, last_name, Language::French);
+    print!("Basic\n");
+    say_hello_basic(first_name, last_name, Language::English);
+    say_hello_basic(first_name, last_name, Language::French);
+    print!("Builder pattern\n");
+    say_hello_builder_pattern(first_name, last_name, Language::English);
+    say_hello_builder_pattern(first_name, last_name, Language::French);
+    print!("Default trait\n");
+    say_hello_default(first_name, last_name, Language::English);
+    say_hello_default(first_name, last_name, Language::French);
     println!("3 + 5 = {}", sum(3,5));
-}
-
-enum Language {
-    English,
-    French
 }
 
 fn greet_msg(f_name: &str, l_name: &str, language: Language) -> String {
@@ -19,8 +26,26 @@ fn greet_msg(f_name: &str, l_name: &str, language: Language) -> String {
     format!("{} {} {}", greeting, f_name, l_name)
 }
 
-fn say_hello(f_name: &str, l_name: &str, language: Language) {
+fn say_hello_basic(f_name: &str, l_name: &str, language: Language) {
     println!("{}", greet_msg(f_name, l_name, language));
+}
+
+// default params (builder pattern + default trait)
+
+fn say_hello_builder_pattern(f_name: &str, l_name: &str, language: Language) {
+    let msg = greeter::builder::GreeterBuilder::new()
+        .name(f_name.to_owned() + " " + l_name)
+        .with_language(language)
+        .finish();
+    println!("{}", msg);
+}
+
+fn say_hello_default(f_name: &str, l_name: &str, language: Language) {
+    let msg = greeter::default::Greeter{
+        name:f_name.to_owned() + " " + l_name,
+        language: language,
+    };
+    println!("{}", msg);
 }
 
 // no semi-column = implicit return
@@ -35,6 +60,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        say_hello("Peter", "Parker", Language::English);
+        say_hello_basic("Peter", "Parker", Language::English);
     }
 }
