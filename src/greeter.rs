@@ -117,8 +117,9 @@ pub mod default {
 
     #[cfg(test)]
     mod tests {
-        // Note this useful idiom: importing names from outer (for mod tests) scope.
-        use super::*;
+        // only use what we need (not super::*)
+        use super::Greeter;
+        use super::Language;
 
         #[test]
         fn greeter_default_it_works_with_default_language() {
