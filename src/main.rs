@@ -1,5 +1,5 @@
-mod language;
 mod greeter;
+mod language;
 
 use language::Language;
 
@@ -15,7 +15,7 @@ fn main() {
     print!("Default trait\n");
     say_hello_default(first_name, last_name, Language::English);
     say_hello_default(first_name, last_name, Language::French);
-    println!("3 + 5 = {}", sum(3,5));
+    println!("3 + 5 = {}", sum(3, 5));
 }
 
 fn greet_msg(f_name: &str, l_name: &str, language: Language) -> String {
@@ -41,8 +41,8 @@ fn say_hello_builder_pattern(f_name: &str, l_name: &str, language: Language) {
 }
 
 fn say_hello_default(f_name: &str, l_name: &str, language: Language) {
-    let msg = greeter::default::Greeter{
-        name:f_name.to_owned() + " " + l_name,
+    let msg = greeter::default::Greeter {
+        name: f_name.to_owned() + " " + l_name,
         language: language,
     };
     println!("{}", msg);

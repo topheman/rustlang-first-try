@@ -3,7 +3,7 @@
 /**
  * Implementation using builder pattern - https://github.com/rust-unofficial/patterns/blob/master/patterns/builder.md
  * That way, we provide defaults (rust doesn't have default values for params)
- * 
+ *
  * https://youtu.be/STWuPMcwwbw
  */
 pub mod builder {
@@ -53,7 +53,7 @@ pub mod builder {
         pub fn finish(self) -> Greeter {
             Greeter {
                 name: self.name,
-                language: self.language
+                language: self.language,
             }
         }
     }
@@ -70,13 +70,19 @@ pub mod builder {
         }
         #[test]
         fn greeter_builder_it_works_with_specific_language() {
-            let greeter = GreeterBuilder::new().name("Yolo".to_string()).with_language(Language::French).finish();
+            let greeter = GreeterBuilder::new()
+                .name("Yolo".to_string())
+                .with_language(Language::French)
+                .finish();
             assert_eq!(format!("{}", greeter), "Bonjour Yolo");
         }
         #[test]
         fn greeter_builder_it_works_with_debug_output() {
             let greeter = GreeterBuilder::new().name("Yolo".to_string()).finish();
-            assert_eq!(format!("{:?}", greeter), "Greeter { language: English, name: \"Yolo\" }");
+            assert_eq!(
+                format!("{:?}", greeter),
+                "Greeter { language: English, name: \"Yolo\" }"
+            );
         }
     }
 }
@@ -87,8 +93,8 @@ pub mod builder {
 pub mod default {
 
     use language::Language;
-    use std::fmt;
     use std::default::Default;
+    use std::fmt;
 
     #[derive(Debug)]
     pub struct Greeter {
@@ -123,18 +129,30 @@ pub mod default {
 
         #[test]
         fn greeter_default_it_works_with_default_language() {
-            let greeter = Greeter{name: "Yolo".to_string(), ..Greeter::default()};
+            let greeter = Greeter {
+                name: "Yolo".to_string(),
+                ..Greeter::default()
+            };
             assert_eq!(format!("{}", greeter), "Hello Yolo");
         }
         #[test]
         fn greeter_default_it_works_with_specific_language() {
-            let greeter = Greeter{name: "Yolo".to_string(), language: Language::French};
+            let greeter = Greeter {
+                name: "Yolo".to_string(),
+                language: Language::French,
+            };
             assert_eq!(format!("{}", greeter), "Bonjour Yolo");
         }
         #[test]
         fn greeter_default_it_works_with_debug_output() {
-            let greeter = Greeter{name: "Yolo".to_string(), ..Greeter::default()};
-            assert_eq!(format!("{:?}", greeter), "Greeter { language: English, name: \"Yolo\" }");
+            let greeter = Greeter {
+                name: "Yolo".to_string(),
+                ..Greeter::default()
+            };
+            assert_eq!(
+                format!("{:?}", greeter),
+                "Greeter { language: English, name: \"Yolo\" }"
+            );
         }
     }
 
