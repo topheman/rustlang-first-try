@@ -8,7 +8,7 @@
  */
 pub mod builder {
 
-    use language::Language;
+    use libs::language::Language;
     use std::fmt;
 
     #[derive(Debug)]
@@ -92,7 +92,7 @@ pub mod builder {
  */
 pub mod default {
 
-    use language::Language;
+    use libs::language::Language;
     use std::default::Default;
     use std::fmt;
 
