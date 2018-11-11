@@ -1,6 +1,7 @@
 # rustlang-first-try
 
 [![Build Status](https://travis-ci.org/topheman/rustlang-first-try.svg?branch=master)](https://travis-ci.org/topheman/rustlang-first-try)
+[![Documentation](https://img.shields.io/badge/documentation-online-blue.svg)](https://topheman.github.io/rustlang-first-try/rustlang_first_try)
 
 ## Install / Build
 
@@ -22,6 +23,10 @@ cargo run
 ```shell
 cargo test
 ```
+
+## Documentation
+
+The documentation is generated on Travis CI with `cargo doc` and then published on [github pages](https://topheman.github.io/rustlang-first-try/rustlang_first_try).
 
 ## Notes
 

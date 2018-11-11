@@ -7,9 +7,19 @@ cache: cargo
 script:
   - cargo build --verbose --all
   - cargo test --verbose --all
+  - cargo doc --verbose --all --no-deps
   - cargo run help
   - cargo run hello
 matrix:
   allow_failures:
     - rust: nightly
   fast_finish: true
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: $TRAVIS_BUILD_DIR/target/doc
+  github_token: $GITHUB_TOKEN
+  on:
+    repo: topheman/rustlang-first-try
+    branch: master
+    condition: $TRAVIS_RUST_VERSION = stable
