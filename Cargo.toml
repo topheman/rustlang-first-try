@@ -1,6 +1,6 @@
 [package]
 name = "rustlang-first-try"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Christophe Rosset <tophe@topheman.com>"]
 
 [dependencies]
