@@ -1,5 +1,7 @@
 # rustlang-first-try
 
+[![Build Status](https://travis-ci.org/topheman/rustlang-first-try.svg?branch=master)](https://travis-ci.org/topheman/rustlang-first-try)
+
 ## Install / Build
 
 ```shell
