@@ -12,6 +12,9 @@ cargo build
 cargo run
 ```
 
+- `cargo run` / `cargo run help`: displays help section
+- `cargo run hello`: simple hello worlds
+
 ## Test
 
 ```shell
