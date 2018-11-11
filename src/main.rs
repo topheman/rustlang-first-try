@@ -1,3 +1,23 @@
+//! This project is a little command line interface that exposes a few rust use cases.
+//!
+//! You will find at the root of the `src` folder the entry points containing a `run()` function to call for each command.
+//!
+//! # Examples
+//!
+//! ```shell
+//! cargo run
+//! cargo run hello
+//! ```
+//!
+//! # Notes
+//!
+//! This documentation has been generated with `cargo doc --all`.
+//!
+//! To generate it and read it yourself in local, run `cargo doc --open`.
+//!
+//! * 📚 More infos on the [repo's README](https://github.com/topheman/rustlang-first-try#readme)
+//! * 👇 Check out the Modules section
+
 pub mod libs {
     pub mod greeter;
     pub mod language;

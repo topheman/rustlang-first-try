@@ -1,13 +1,14 @@
-/** builder + default implementation of greeter */
-
-/**
- * Implementation using builder pattern - https://github.com/rust-unofficial/patterns/blob/master/patterns/builder.md
- * That way, we provide defaults (rust doesn't have default values for params)
- *
- * https://youtu.be/STWuPMcwwbw
- */
+//! # Greeter implentations
+//!
+//! Greeter, implemented with both:
+//! * builder pattern
+//! * default trait
 pub mod builder {
-
+    //! Implementation using [builder pattern](https://github.com/rust-unofficial/patterns/blob/master/patterns/builder.md).
+    //!
+    //! That way, we provide defaults (rust doesn't have default values for params)
+    //!
+    //! [Check this video](https://youtu.be/STWuPMcwwbw) for more infos.
     use libs::language::Language;
     use std::fmt;
 
@@ -87,11 +88,9 @@ pub mod builder {
     }
 }
 
-/**
- * Implementation using default trait - https://stackoverflow.com/questions/24047686/default-function-arguments-in-rust#31381497
- */
 pub mod default {
 
+    //! Implementation using [default trait](https://stackoverflow.com/questions/24047686/default-function-arguments-in-rust#31381497)
     use libs::language::Language;
     use std::default::Default;
     use std::fmt;
