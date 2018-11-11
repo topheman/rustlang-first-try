@@ -1,18 +1,23 @@
+extern crate colored;
+
+use self::colored::*;
+
 use super::libs::greeter;
 use super::libs::language::Language;
 
 pub fn run() {
     let first_name = "Tony";
     let last_name = "Stark";
-    print!("Basic\n");
+    println!("{}", "Basic".bold());
     say_hello_basic(first_name, last_name, Language::English);
     say_hello_basic(first_name, last_name, Language::French);
-    print!("Builder pattern\n");
+    println!("{}", "Builder pattern".bold());
     say_hello_builder_pattern(first_name, last_name, Language::English);
     say_hello_builder_pattern(first_name, last_name, Language::French);
-    print!("Default trait\n");
+    println!("{}", "Default trait".bold());
     say_hello_default(first_name, last_name, Language::English);
     say_hello_default(first_name, last_name, Language::French);
+    println!("{}", "Other".bold());
     println!("3 + 5 = {}", sum(3, 5));
 }
 
