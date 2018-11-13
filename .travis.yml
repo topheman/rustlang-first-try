@@ -10,6 +10,7 @@ script:
   - cargo doc --verbose --all --no-deps
   - cargo run help
   - cargo run hello
+  - cargo run string
 matrix:
   allow_failures:
     - rust: nightly

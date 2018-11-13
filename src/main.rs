@@ -25,6 +25,7 @@ pub mod libs {
 
 mod hello;
 mod help;
+mod string;
 
 use std::env;
 
@@ -56,6 +57,10 @@ fn real_main() -> i32 {
             }
             "hello" => {
                 hello::run();
+                0
+            }
+            "string" => {
+                string::run();
                 0
             }
             cmd => {

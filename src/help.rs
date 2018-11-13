@@ -21,5 +21,6 @@ pub fn run() {
         "      {}",
         "hello                         simple hello worlds"
     );
+    println!("      {}", "string                        testing strings");
     println!();
 }
