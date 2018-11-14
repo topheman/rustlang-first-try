@@ -23,6 +23,7 @@ pub fn run() {
     borrowing_immutable_string();
     borrowing_mutable_string();
     string_slice();
+    lifetime();
 }
 
 fn list_months() {
@@ -57,6 +58,22 @@ fn borrowing_mutable_string() {
     change(mutable_string_0);
     // at this point: cannot borrow `mutable_string` as immutable because it is also borrowed as mutable
     println!("mutable_string_0: \"{}\"", mutable_string_0);
+}
+
+fn lifetime() {
+    println!("{}", "lifetime".bold());
+    let string1 = String::from("Hello World");
+    let string2 = "Bonjour le monde";
+    let result = longest(&string1[..], string2);
+    println!("The longest is \"{}\"", result);
+
+    // More infos on https://doc.rust-lang.org/book/2018-edition/ch10-03-lifetime-syntax.html
+    fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+        if s1.len() > s2.len() {
+            return s1;
+        }
+        return s2;
+    }
 }
 
 // Inspired of https://doc.rust-lang.org/book/2018-edition/ch04-03-slices.html
