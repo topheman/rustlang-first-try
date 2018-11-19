@@ -50,7 +50,7 @@ fn real_main() -> i32 {
             help::run();
             0
         }
-        2 => match &args[1][..] {
+        _ => match &args[1][..] {
             "help" => {
                 help::run();
                 0
@@ -60,7 +60,7 @@ fn real_main() -> i32 {
                 0
             }
             "string" => {
-                string::run();
+                string::run(extract_task_args(&args));
                 0
             }
             cmd => {
@@ -68,10 +68,43 @@ fn real_main() -> i32 {
                 126
             }
         },
-        _ => {
-            help::run();
-            0
-        }
     };
     return _status_code;
+}
+
+// Extract arguments passed to a tasks like Vec["foo", "bar"] in `cargo run string foo bar`
+fn extract_task_args(args: &Vec<String>) -> Vec<&str> {
+    args.iter()
+        .enumerate() // adds indexes i as (index, elem) tuple in map/filter
+        .filter(|(i, _)| *i > 1)
+        .map(|(_, s)| &**s)
+        .collect()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::extract_task_args;
+
+    #[test]
+    fn it_works_extract_task_args() {
+        let args_no_tasks = vec![String::from("target/debug/rustlang-first-try")];
+        let args_one_task = vec![
+            String::from("target/debug/rustlang-first-try"),
+            String::from("string"),
+        ];
+        let args_one_task_plus_arguments = vec![
+            String::from("target/debug/rustlang-first-try"),
+            String::from("string"),
+            String::from("foo"),
+            String::from("bar"),
+        ];
+        // Use the "turbofish" `::<>` syntax to explicitly declare type of vector
+        // Rust can't infer type from empty vector
+        assert_eq!(extract_task_args(&args_no_tasks), Vec::<String>::new());
+        assert_eq!(extract_task_args(&args_one_task), Vec::<String>::new());
+        assert_eq!(
+            extract_task_args(&args_one_task_plus_arguments),
+            vec![String::from("foo"), String::from("bar")]
+        );
+    }
 }

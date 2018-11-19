@@ -17,13 +17,31 @@ const MONTHS: [&str; 12] = [
     "December",
 ];
 
-pub fn run() {
-    list_months();
-    // For more infos, check https://doc.rust-lang.org/book/2018-edition/ch04-02-references-and-borrowing.html
-    borrowing_immutable_string();
-    borrowing_mutable_string();
-    string_slice();
-    lifetime();
+// ⚠ TODO pass a struct containing
+// - full args
+// - args for the current command
+// - mode (release / debug ... run with cargo run or not ...)
+pub fn run(args: Vec<&str>) {
+    match args.len() {
+        1 => match &args[0][..] {
+            "help" => help(),
+            _ => println!("Unknown `{}` command - try `string help`", &args[0][..]),
+        },
+        0 => {
+            list_months();
+            // For more infos, check https://doc.rust-lang.org/book/2018-edition/ch04-02-references-and-borrowing.html
+            borrowing_immutable_string();
+            borrowing_mutable_string();
+            string_slice();
+            lifetime();
+            println!("{:?}", args);
+        }
+        _ => panic!("Unhandled arguments case"),
+    }
+}
+
+fn help() {
+    println!("{}", "Help for string");
 }
 
 fn list_months() {
