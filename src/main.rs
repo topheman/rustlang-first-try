@@ -23,6 +23,7 @@ pub mod libs {
     pub mod language;
 }
 
+mod fp;
 mod hello;
 mod help;
 mod string;
@@ -61,6 +62,10 @@ fn real_main() -> i32 {
             }
             "string" => {
                 string::run(extract_task_args(&args));
+                0
+            }
+            "fp" => {
+                fp::run();
                 0
             }
             cmd => {

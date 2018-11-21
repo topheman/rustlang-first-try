@@ -12,6 +12,7 @@ script:
   - cargo run hello
   - cargo run string
   - cargo run string help
+  - cargo run fp
 matrix:
   allow_failures:
     - rust: nightly
