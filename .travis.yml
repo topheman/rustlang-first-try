@@ -13,6 +13,7 @@ script:
   - cargo run string
   - cargo run string help
   - cargo run fp
+  - cargo run smartpointer
 matrix:
   allow_failures:
     - rust: nightly

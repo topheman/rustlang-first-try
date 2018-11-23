@@ -26,6 +26,10 @@ pub fn run() -> i32 {
         "      {}",
         "fp                            functional programming patterns"
     );
+    println!(
+        "      {}",
+        "smartpointer                  understand smartpointers/deref/drop"
+    );
     println!();
     return 0;
 }

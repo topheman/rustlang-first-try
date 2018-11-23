@@ -27,6 +27,7 @@ pub mod libs {
 mod fp;
 mod hello;
 mod help;
+mod smartpointer;
 mod string;
 
 /**
@@ -51,6 +52,7 @@ fn real_main() -> i32 {
         "hello" => hello::run(),
         "string" => string::run(config.task_args),
         "fp" => fp::run(),
+        "smartpointer" => smartpointer::run(),
         cmd => {
             println!("Command not found ({})", cmd);
             126 // return failing statusCode - other ::run() task return i32 statusCodes
