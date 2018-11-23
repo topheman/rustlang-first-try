@@ -2,7 +2,7 @@ extern crate colored;
 
 use self::colored::*;
 
-pub fn run() {
+pub fn run() -> i32 {
     println!();
     println!(
         "  {} {}",
@@ -27,4 +27,5 @@ pub fn run() {
         "fp                            functional programming patterns"
     );
     println!();
+    return 0;
 }

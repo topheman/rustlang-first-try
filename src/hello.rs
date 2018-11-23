@@ -5,7 +5,7 @@ use self::colored::*;
 use super::libs::greeter;
 use super::libs::language::Language;
 
-pub fn run() {
+pub fn run() -> i32 {
     let first_name = "Tony";
     let last_name = "Stark";
     println!("{}", "Basic".bold());
@@ -19,6 +19,7 @@ pub fn run() {
     say_hello_default(first_name, last_name, Language::French);
     println!("{}", "Other".bold());
     println!("3 + 5 = {}", sum(3, 5));
+    return 0;
 }
 
 pub fn greet_msg(f_name: &str, l_name: &str, language: Language) -> String {

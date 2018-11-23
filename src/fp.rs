@@ -8,10 +8,11 @@ struct Project {
     language: String,
 }
 
-pub fn run() {
+pub fn run() -> i32 {
     println!("{}", "fp".bold());
     closures();
     iterators();
+    return 0;
 }
 
 fn closures() {

@@ -17,15 +17,21 @@ const MONTHS: [&str; 12] = [
     "December",
 ];
 
-// ⚠ TODO pass a struct containing
+// ⚠️ TODO use the full Config + wants_help method
 // - full args
 // - args for the current command
 // - mode (release / debug ... run with cargo run or not ...)
-pub fn run(args: Vec<&str>) {
-    match args.len() {
+pub fn run(args: Vec<String>) -> i32 {
+    let status_code = match args.len() {
         1 => match &args[0][..] {
-            "help" => help(),
-            _ => println!("Unknown `{}` command - try `string help`", &args[0][..]),
+            "help" => {
+                help();
+                0
+            }
+            _ => {
+                println!("Unknown `{}` command - try `string help`", &args[0][..]);
+                126
+            }
         },
         0 => {
             list_months();
@@ -35,9 +41,14 @@ pub fn run(args: Vec<&str>) {
             string_slice();
             lifetime();
             println!("{:?}", args);
+            0
         }
-        _ => panic!("Unhandled arguments case"),
-    }
+        _ => {
+            println!("{}", "Unhandled arguments case");
+            126
+        }
+    };
+    return status_code;
 }
 
 fn help() {

@@ -19,6 +19,7 @@
 //! * 👇 Check out the Modules section
 
 pub mod libs {
+    pub mod cli;
     pub mod greeter;
     pub mod language;
 }
@@ -27,8 +28,6 @@ mod fp;
 mod hello;
 mod help;
 mod string;
-
-use std::env;
 
 /**
  * Inspired by https://stackoverflow.com/questions/30281235/how-to-cleanly-end-the-program-with-an-exit-code
@@ -45,39 +44,23 @@ fn main() {
  * Inspired by https://doc.rust-lang.org/rust-by-example/std_misc/arg/matching.html
  */
 fn real_main() -> i32 {
-    let args: Vec<String> = env::args().collect();
-    let _status_code: i32 = match args.len() {
-        1 => {
-            help::run();
-            0
+    let config = libs::cli::Config::new(std::env::args());
+    // must convert to slice before matching
+    let status_code = match &config.task[..] {
+        "help" => help::run(),
+        "hello" => hello::run(),
+        "string" => string::run(config.task_args),
+        "fp" => fp::run(),
+        cmd => {
+            println!("Command not found ({})", cmd);
+            126 // return failing statusCode - other ::run() task return i32 statusCodes
         }
-        _ => match &args[1][..] {
-            "help" => {
-                help::run();
-                0
-            }
-            "hello" => {
-                hello::run();
-                0
-            }
-            "string" => {
-                string::run(extract_task_args(&args));
-                0
-            }
-            "fp" => {
-                fp::run();
-                0
-            }
-            cmd => {
-                println!("Command not found ({})", cmd);
-                126
-            }
-        },
     };
-    return _status_code;
+    return status_code; // return success statusCode
 }
 
 // Extract arguments passed to a tasks like Vec["foo", "bar"] in `cargo run string foo bar`
+#[allow(dead_code)]
 fn extract_task_args(args: &Vec<String>) -> Vec<&str> {
     args.iter()
         .enumerate() // adds indexes i as (index, elem) tuple in map/filter
