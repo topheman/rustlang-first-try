@@ -1,0 +1,11 @@
+var ALIASES = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};
+ALIASES['rustlang_first_try'] = {};

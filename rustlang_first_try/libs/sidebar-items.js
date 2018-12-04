@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["cli","Config implementation"],["greeter","Greeter implentations"],["language","Language infos"]]});

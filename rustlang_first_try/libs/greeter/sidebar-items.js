@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["builder","Implementation using builder pattern."],["default","Implementation using default trait"]]});
