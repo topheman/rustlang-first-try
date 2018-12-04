@@ -45,3 +45,8 @@ Then you'll be able to:
 - `cargo add my-package` (optinally with flags `--dev` or `--build`)
 - `cargo rm my-package`
 - `cargo upgrade my-package`
+
+## Resources
+
+- [The Rust Programming Language](https://doc.rust-lang.org/stable/book/2018-edition/)
+- [Setting Up a Rust Development Environment](https://dev.to/jonasbn/til-setting-up-a-rust-development-environment-2f95)
